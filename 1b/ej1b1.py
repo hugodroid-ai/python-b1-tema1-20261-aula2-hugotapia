@@ -16,28 +16,22 @@ Ejemplo:
     Salida:
     87
 
-Enunciat:
-Implementar la funció 'obtain_max(list_numbers)' que rep 
-com a paràmetre una llista no buida de nombres enters i retorna
-el número major de la llista.
 
-Recorda que en Python existeix la funció anomenada 'max'
-
-Paràmetres:
-- list_numbers: Llista de nombres enters
-
-Exemple:
-    Entrada:
-    obtain_max([1, 45, 87, 21, 0, 23, 28])
-
-    Sortida:
-    87
 """
 
 def obtain_max(list_numbers):
-    # Write here your code
-    pass
+    #validaciones 
+    if not isinstance(list_numbers,list):
+        raise ValueError("El parametro debe ser una lista")
+    if len(list_numbers)==0:
+        raise ValueError("La lista no debe estar vacia")
+    for n in list_numbers:
+        if not isinstance(n,int):
+            raise ValueError("La lista debe contener numeros enteros")
+    #Obtenemos el numero mayor de la lista 
+    numero_maximo= max(list_numbers)
+    return numero_maximo
 
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script 
 # Si vols provar el teu codi, descomenta les línies següents i executa l'script
-# print(obtain_max([1, 45, 87, 21, 0, 23, 28]))
+print(obtain_max([1, 45, 87, 21, 0, 23, 28]))

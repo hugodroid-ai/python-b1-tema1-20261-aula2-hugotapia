@@ -15,40 +15,26 @@ Ejemplo:
 
     Salida:
     True
-
-
-
-Enunciat:
-
-Enunciat:
-Escriu una funció anomenada is_palindrome(word) que rebi com a paràmetre
-una cadena word i verifiqui si és un palíndrom utilitzant recursió.
-La funció ha de tornar True si la cadena és un palíndrom i False a
-cas contrari.
-
-Paràmetres:
-     word (str): una cadena de caràcters.
-
-Exemple:
-     Entrada:
-     word = "racecar"
-     print(is_palindrome(word))
-
-     Sortida:
-     True
-
 """
-
-
 def is_palindrome(word):
-    # Write here your code
-    pass
-
-
+    # validaciones
+    if not isinstance(word,str):
+        raise ValueError("El paparametro debe ser un string")
+   
+    #Caso base : 
+    # 1 si la cadena es vacia o con un solo elemento es un palindrome  
+    if len(word)<=1:
+        return True
+    # 2 Si la primera letra y la ultima letra no coinciden no es palindrome 
+    if word[0]!=word[-1]:
+        return False
+    # 3 Caso recursivo: Si la primera y la ultima coinciden ,
+    #Comparamos el interior de la cadena sin esos extremos
+    return is_palindrome(word[1:-1])
+    
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script
-# Si vols provar el teu codi, descomenta les línies següents i executa l'script
-# word = "level"
-# print(f"Is '{word}' word palindrome?", is_palindrome(word))
+word = "level"
+print(f"Is '{word}' word palindrome?", is_palindrome(word))
 #
-# word = "juan"
-# print(f"Is '{word}' word palindrome?", is_palindrome(word))
+word = "juan"
+print(f"Is '{word}' word palindrome?", is_palindrome(word))

@@ -15,34 +15,31 @@ Ejemplo:
 
     Salida:
     7
-
-
-Enunciat:
-
-Implementa una funció anomenada find_max(lst) que trobi el valor màxim en una
-llista de números utilitzant recursió. La funció ha de tornar el valor
-màxim de la llista.
-
-Paràmetres:
-     lst (List): llista de nombres enters o flotants
-
-Exemple:
-     Entrada:
-     numbers_list = [1, 5, 2, 7, 3]
-     fid_max(numbers_list)
-
-     Sortida:
-     7
-
 """
-
-
 def find_max(lst):
-    # Write here your code
-    pass
-
-
+    # validaciones 
+    if not isinstance(lst,list):
+        raise ValueError(" lst debe ser una lista")
+    if len(lst)==0:
+        raise ValueError(" La lista  lst no debe ser vacia")
+    for n in lst:
+        if not isinstance (n,(int,float)) or  isinstance(n,bool):
+            raise ValueError("El elemento de la lista  lst debe ser entero o flotante")
+        
+    # El caso base, rompe la recursion seria cuando la lista tiene 1 solo elemento
+    if len(lst) ==1:
+        return lst[0]
+    #Caso recursivo
+    # Calculamos el maximo  del resto de la lista sin el 1r elemento 
+    max_resto=find_max(lst[1:])
+    #comparamos el maximo numero del resto con el 1er elemento y retornamoa el myor de los dos
+    if max_resto>lst[0]:
+        return max_resto
+    else:
+        return lst[0]
+     
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script
-# Si vols provar el teu codi, descomenta les línies següents i executa l'script
-# numbers_list = [1, 5, 2, 7, 3]
-# print(find_max(numbers_list))
+
+numbers_list = [1, 5, 2, 7, 3]
+print(find_max(numbers_list))
+

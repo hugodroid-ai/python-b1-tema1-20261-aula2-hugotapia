@@ -15,32 +15,24 @@ Ejemplo
     Salida:
     [5, 4, 3, 2, 1]
 
-Enunciat:
-
-Escriu una funció anomenada 'invert_list(lst)' que rebi com a paràmetre
-una llista 'lst' i la inverteixi utilitzant recursió. La funció ha
-tornar la llista invertida.
-
-Paràmetres:
-     lst (list): una llista d'elements.
-
-Exemple
-     Entrada:
-     lst = [1, 2, 3, 4, 5]
-     print(invert_list(lst))
-
-     Sortida:
-     [5, 4, 3, 2, 1]
 
 """
 
-
 def invert_list(lst):
-    # Write here your code
-    pass
+    # validacion
+    if not isinstance(lst,list):
+        raise ValueError(" El parametro lst debe ser una lista ")
+#Caso base : cuando la lista este vacia o contiene 1 elemento ya esta invertida->detiene la recursion
+    if len(lst)<=1:
+        return lst
+#Recursividad ->empieza cuando hay >2 elementos y luego concatenamos 1er elemento(se convirete en ultimo)
+    return invert_list(lst[1: ])+ [lst[0]]
+#metodo alternativo 
+   # if len(lst)<=1:
+    #    return lst
+    #return [lst[-1]]+ invert_list(lst[ :-1]) # ultimo elemento lo ponemos al principio'''
 
-
-# Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script
-# Si vols provar el teu codi, descomenta les línies següents i executa l'script
-# lst = [1, 20, 3, 40, 5]
-#print(invert_list(lst))
+    
+# Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script:
+lst = [1, 2, 3, 4, 5]
+print(invert_list(lst))
